@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  coffee-farm-management-pg:
+  ssys-employee-manager-pg:
     image: bitnami/postgresql
     ports:
       - 5432:5432
