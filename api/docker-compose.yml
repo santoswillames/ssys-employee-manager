@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  coffee-farm-management-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=will
+      - POSTGRESQL_PASSWORD=wi356595
+      - POSTGRESQL_DATABASE=ssysemployeemanager
