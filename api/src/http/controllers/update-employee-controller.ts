@@ -14,12 +14,7 @@ export async function updateEmployee(
     email: z.string().email().optional(),
     department: z.string().optional(),
     salary: z.number().min(1),
-    birthDate: z
-      .string()
-      .regex(/^\d{2}-\d{2}-\d{4}$/, {
-        message: 'Invalid format date. ',
-      })
-      .optional(),
+    birthDate: z.string().date().optional(),
   })
 
   const updateEmployeeParamsSchema = z.object({
@@ -40,7 +35,7 @@ export async function updateEmployee(
       email,
       department,
       salary,
-      birth_date: birthDate,
+      birthDate,
     })
   } catch (error) {
     if (

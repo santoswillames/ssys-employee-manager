@@ -1,6 +1,7 @@
 import { IEmployeeRepository } from '@/repositores/employees-repository'
 import { EmployeeEmailAlreadyExistsError } from './errors/employee-email-already-exists-error'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { parse } from 'date-fns'
 
 interface IEmployeeUseCaseRequest {
   id: string
@@ -8,7 +9,7 @@ interface IEmployeeUseCaseRequest {
   email?: string
   department?: string
   salary: number
-  birth_date?: string
+  birthDate?: string
 }
 
 export class UpdateEmployeeUseCase {
@@ -20,7 +21,7 @@ export class UpdateEmployeeUseCase {
     email,
     department,
     salary,
-    birth_date,
+    birthDate,
   }: IEmployeeUseCaseRequest) {
     const employee = await this.employeeRepository.findById(id)
 
@@ -37,13 +38,17 @@ export class UpdateEmployeeUseCase {
       }
     }
 
+    const formattedBirthDate = birthDate
+      ? parse(birthDate, 'yyyy-mm-dd', new Date())
+      : birthDate
+
     await this.employeeRepository.update({
       id,
       name,
       email,
       department,
       salary,
-      birth_date,
+      birth_date: formattedBirthDate,
     })
   }
 }

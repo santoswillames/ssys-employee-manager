@@ -1,36 +1,40 @@
 import { IEmployeeRepository } from '@/repositores/employees-repository'
 import { EmployeeEmailAlreadyExistsError } from './errors/employee-email-already-exists-error'
+import { parse } from 'date-fns'
 
 interface IEmployeeUseCaseRequest {
   name: string
   email: string
   department: string
   salary: number
-  birth_date: string
+  birthDate: string
 }
 
 export class CreateEmployeeUseCase {
-  constructor(private usersRepository: IEmployeeRepository) {}
+  constructor(private employeeRepository: IEmployeeRepository) {}
 
   async execute({
     name,
     email,
     department,
     salary,
-    birth_date,
+    birthDate,
   }: IEmployeeUseCaseRequest) {
-    const employeeWithSameEmail = await this.usersRepository.findByEmail(email)
+    const employeeWithSameEmail =
+      await this.employeeRepository.findByEmail(email)
 
     if (employeeWithSameEmail) {
       throw new EmployeeEmailAlreadyExistsError()
     }
 
-    await this.usersRepository.create({
+    const formattedBirthDate = parse(birthDate, 'yyyy-mm-dd', new Date())
+
+    await this.employeeRepository.create({
       name,
       email,
       department,
       salary,
-      birth_date,
+      birth_date: formattedBirthDate,
     })
   }
 }

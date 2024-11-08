@@ -13,9 +13,7 @@ export async function createEmployee(
     email: z.string().email(),
     department: z.string(),
     salary: z.number().min(1),
-    birthDate: z.string().regex(/^\d{2}-\d{2}-\d{4}$/, {
-      message: 'Invalid format date. ',
-    }),
+    birthDate: z.string().date(),
   })
 
   const { name, email, department, birthDate, salary } =
@@ -30,7 +28,7 @@ export async function createEmployee(
       email,
       department,
       salary,
-      birth_date: birthDate,
+      birthDate,
     })
   } catch (error) {
     if (error instanceof EmployeeEmailAlreadyExistsError) {
