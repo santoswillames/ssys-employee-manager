@@ -39,6 +39,16 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
     return employee
   }
 
+  async findByEmail(email: string) {
+    const employee = await prisma.employee.findUnique({
+      where: {
+        email,
+      },
+    })
+
+    return employee
+  }
+
   async create(data: Prisma.EmployeeCreateInput) {
     const employee = await prisma.employee.create({
       data,
