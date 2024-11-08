@@ -27,7 +27,7 @@ export class CreateEmployeeUseCase {
       throw new EmployeeEmailAlreadyExistsError()
     }
 
-    const formattedBirthDate = parse(birthDate, 'yyyy-mm-dd', new Date())
+    const formattedBirthDate = parse(birthDate, 'yyyy-MM-dd', new Date())
 
     await this.employeeRepository.create({
       name,

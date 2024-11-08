@@ -39,7 +39,7 @@ export class UpdateEmployeeUseCase {
     }
 
     const formattedBirthDate = birthDate
-      ? parse(birthDate, 'yyyy-mm-dd', new Date())
+      ? parse(birthDate, 'yyyy-MM-dd', new Date())
       : birthDate
 
     await this.employeeRepository.update({
