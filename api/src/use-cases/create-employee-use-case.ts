@@ -1,5 +1,5 @@
 import { IEmployeeRepository } from '@/repositores/employees-repository'
-import { EmployeeAlreadyExistsError } from './errors/employee-already-exists-error'
+import { EmployeeEmailAlreadyExistsError } from './errors/employee-email-already-exists-error'
 
 interface IEmployeeUseCaseRequest {
   name: string
@@ -22,7 +22,7 @@ export class CreateEmployeeUseCase {
     const employeeWithSameEmail = await this.usersRepository.findByEmail(email)
 
     if (employeeWithSameEmail) {
-      throw new EmployeeAlreadyExistsError()
+      throw new EmployeeEmailAlreadyExistsError()
     }
 
     await this.usersRepository.create({

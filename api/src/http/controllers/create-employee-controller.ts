@@ -1,6 +1,6 @@
 import { PrismaEmployeeRepository } from '@/repositores/prisma/prisma-employees-repository'
 import { CreateEmployeeUseCase } from '@/use-cases/create-employee-use-case'
-import { EmployeeAlreadyExistsError } from '@/use-cases/errors/employee-already-exists-error'
+import { EmployeeEmailAlreadyExistsError } from '@/use-cases/errors/employee-email-already-exists-error'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -33,7 +33,7 @@ export async function createEmployee(
       birth_date: birthDate,
     })
   } catch (error) {
-    if (error instanceof EmployeeAlreadyExistsError) {
+    if (error instanceof EmployeeEmailAlreadyExistsError) {
       return reply.status(409).send({
         message: error.message,
       })
