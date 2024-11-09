@@ -41,3 +41,13 @@ Modelo de resposta:
  - GET http://localhost:3333/employees/ID (employee detail)
  - GET http://localhost:3333/reports/employees/salary (salary report)
  - GET http://localhost:3333/reports/employees/age (age report)
+
+ ## Tecnologias utilizadas no projeto:
+ - Node.js
+ - TypeScript
+ - Fastify
+ - Zod
+ - Prisma ORM
+ - Postgres DB
+ - Docker
+ - Autenticação por JWT
