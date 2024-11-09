@@ -1,7 +1,7 @@
 import { PrismaUsersRepository } from '@/repositores/prisma/prisma-users-repository'
 import { AuthenticateUseCase } from '@/use-cases/authenticate-use-case'
 import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function authenticate(

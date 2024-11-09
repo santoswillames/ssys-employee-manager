@@ -1,7 +1,7 @@
 import { PrismaEmployeeRepository } from '@/repositores/prisma/prisma-employees-repository'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 import { ListUniqueEmployeeUseCase } from '@/use-cases/list-unique-employee-use-case'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function listUniqueEmployee(

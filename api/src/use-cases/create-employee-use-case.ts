@@ -1,4 +1,4 @@
-import { IEmployeeRepository } from '@/repositores/employees-repository'
+import type { IEmployeeRepository } from '@/repositores/employees-repository'
 import { EmployeeEmailAlreadyExistsError } from './errors/employee-email-already-exists-error'
 import { parse } from 'date-fns'
 

@@ -1,8 +1,47 @@
 import { prisma } from '@/lib/prisma'
-import { Prisma } from '@prisma/client'
-import { IEmployeeRepository } from '../employees-repository'
+import type { Employee, Prisma } from '@prisma/client'
+import type { IEmployeeRepository } from '../employees-repository'
 
 export class PrismaEmployeeRepository implements IEmployeeRepository {
+  async findByYounger(): Promise<Employee | null> {
+    const youngestEmployee = await prisma.employee.findFirst({
+      orderBy: {
+        birth_date: 'desc',
+      },
+    })
+    return youngestEmployee
+  }
+
+  async findByOlder(): Promise<Employee | null> {
+    const oldestEmployee = await prisma.employee.findFirst({
+      orderBy: {
+        birth_date: 'asc',
+      },
+    })
+
+    return oldestEmployee
+  }
+
+  async findByLowestSalary(): Promise<Employee | null> {
+    const lowestSalaryEmployee = await prisma.employee.findFirst({
+      orderBy: {
+        salary: 'asc',
+      },
+    })
+
+    return lowestSalaryEmployee
+  }
+
+  async findByHighestSalary(): Promise<Employee | null> {
+    const highestSalaryEmployee = await prisma.employee.findFirst({
+      orderBy: {
+        salary: 'desc',
+      },
+    })
+
+    return highestSalaryEmployee
+  }
+
   async list() {
     const employees = await prisma.employee.findMany()
     return employees

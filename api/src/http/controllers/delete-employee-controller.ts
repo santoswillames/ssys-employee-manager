@@ -1,7 +1,7 @@
 import { PrismaEmployeeRepository } from '@/repositores/prisma/prisma-employees-repository'
 import { DeleteEmployeeUseCase } from '@/use-cases/delete-employee-use-case'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function deleteEmployee(

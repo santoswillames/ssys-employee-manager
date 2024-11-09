@@ -1,4 +1,4 @@
-import { IEmployeeRepository } from '@/repositores/employees-repository'
+import type { IEmployeeRepository } from '@/repositores/employees-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface IDeleteEmployeeUseCaseRequest {

@@ -1,7 +1,7 @@
 import { PrismaEmployeeRepository } from '@/repositores/prisma/prisma-employees-repository'
 import { CreateEmployeeUseCase } from '@/use-cases/create-employee-use-case'
 import { EmployeeEmailAlreadyExistsError } from '@/use-cases/errors/employee-email-already-exists-error'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function createEmployee(

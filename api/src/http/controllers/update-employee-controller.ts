@@ -2,7 +2,7 @@ import { PrismaEmployeeRepository } from '@/repositores/prisma/prisma-employees-
 import { EmployeeEmailAlreadyExistsError } from '@/use-cases/errors/employee-email-already-exists-error'
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 import { UpdateEmployeeUseCase } from '@/use-cases/update-employee-use-case'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function updateEmployee(

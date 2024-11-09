@@ -1,6 +1,6 @@
 import { PrismaEmployeeRepository } from '@/repositores/prisma/prisma-employees-repository'
 import { ListEmployeeUseCase } from '@/use-cases/list-employee-use-case'
-import { FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function listEmployee(
   _request: FastifyRequest,

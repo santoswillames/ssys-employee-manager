@@ -1,5 +1,6 @@
-import { IEmployeeRepository } from '@/repositores/employees-repository'
+import type { IEmployeeRepository } from '@/repositores/employees-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { format } from 'date-fns'
 
 interface IListUniqueEmployeeUseCaseRequest {
   id: string
@@ -15,8 +16,12 @@ export class ListUniqueEmployeeUseCase {
       throw new ResourceNotFoundError()
     }
 
-    const { created_at, updated_at, ...sanitizedEmployee } = employee
+    const { created_at, updated_at, birth_date, ...sanitizedEmployee } =
+      employee
 
-    return sanitizedEmployee
+    return {
+      ...sanitizedEmployee,
+      birth_date: format(new Date(birth_date), 'dd-MM-yyyy'),
+    }
   }
 }
