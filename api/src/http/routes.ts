@@ -8,6 +8,7 @@ import { listEmployee } from './controllers/list-employee-controller'
 import { listUniqueEmployee } from './controllers/list-unique-employee-controller'
 import { deleteEmployee } from './controllers/delete-employee-controller'
 import { ageRangeReportEmployee } from './controllers/age-range-report-employee-controller'
+import { salaryRangeReportEmployee } from './controllers/salary-range-report-employee-controller'
 
 export async function appRoutes(app: FastifyInstance) {
   app.post('/users', register)
@@ -24,5 +25,10 @@ export async function appRoutes(app: FastifyInstance) {
     '/reports/employees/age',
     { onRequest: [verifyJWT] },
     ageRangeReportEmployee,
+  )
+  app.get(
+    '/reports/employees/salary',
+    { onRequest: [verifyJWT] },
+    salaryRangeReportEmployee,
   )
 }

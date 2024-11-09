@@ -16,7 +16,6 @@ export class AgeRangeReportEmployeeUseCase {
     const youngestEmployee = await this.employeeRepository.findByYounger()
     const oldestEmployee = await this.employeeRepository.findByOlder()
 
-    // Verificar se retornou os employee, se não lançar um erro
     if (youngestEmployee) {
       const {
         created_at,
