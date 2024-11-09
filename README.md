@@ -1,6 +1,6 @@
 # SSYS Employee Manager
 
-Após clonar o respositório, execute dos seguntes comandos:
+Após clonar o respositório, execute os seguintes comandos:
 ```bash
 cd api
 # Instalar as dependências
@@ -20,7 +20,7 @@ Acessar http://localhost:3333/users para criar um usuário adm para autenticaç�
     "password":"123456"
 }
 ```
-Acessar http://localhost:3333/sessions para fazer autenticação, abaixo modelo do body da requisição que retornar o Token para utilizar nas demais requisições do sistema:
+Acessar http://localhost:3333/sessions para fazer autenticação, abaixo modelo do body da requisição que retorna o Token para utilizar nas demais requisições do sistema:
 ```json
 {
     "email":"adm@ssys.com.br",
