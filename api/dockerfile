@@ -1,0 +1,14 @@
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN rm -rf node_modules && npm ci
+
+COPY . .
+
+EXPOSE 3333
+
+CMD ["npm", "run", "dev"]
+
